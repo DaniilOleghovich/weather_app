@@ -5,14 +5,14 @@ import search from "../../static/img/search.png"
 
 const Header = (props) => {
 
-    const [isSwitched, setIsSwitched] = useState(false);
+    const [isFahrenheitSwitched, setIsFahrenheitSwitched] = useState(false);
 
     const buttonSearchHandler = (e) => {
         console.log('Clicked');
     }
 
     const buttonSwitchHandler = () => {
-        setIsSwitched(!isSwitched);
+        setIsFahrenheitSwitched(!isFahrenheitSwitched);
     }
 
     return (
@@ -36,7 +36,7 @@ const Header = (props) => {
                 onClick={buttonSwitchHandler}
             >
                 <p
-                    className={isSwitched ? 'celsius' : 'celsius switched'}
+                    className={isFahrenheitSwitched ? 'celsius' : 'celsius switched'}
                 >
                     °C
                 </p>
@@ -44,7 +44,7 @@ const Header = (props) => {
                     /
                 </p>
                 <p
-                    className={!isSwitched ? 'fahrenheit' : 'fahrenheit switched'}
+                    className={!isFahrenheitSwitched ? 'fahrenheit' : 'fahrenheit switched'}
                 >
                     °F
                 </p>

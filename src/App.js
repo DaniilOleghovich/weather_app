@@ -1,10 +1,11 @@
 import './App.scss';
 import Header from "./components/header/header";
-import CityInfo from "./components/cityInfo/cityInfo";
 import rainLogo from "./static/img/rain.png"
 import {useState} from "react";
-
-function App() {
+import {connect, useSelector} from 'react-redux'
+import City from "./components/city/city";
+import {switchDegreeAction} from "./actions/switchDegreeAction";
+function App(props) {
 
     const timeOptions = {  weekday: 'long', hour: '2-digit', minute: '2-digit', hour12: false};
 
@@ -62,12 +63,31 @@ function App() {
         }
     ])
 
+    // const counter = useSelector((state) => console.log(state.temperatureFormat))
+
+
+
+    // console.log(props);
+
   return (
     <div className="App">
         <Header/>
-        <CityInfo city={city} timeForecast={timeForecast}/>
+        <City degree={props.degree} setTempFormat={props.setTempFormat}/>
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = store => {
+    return {
+        degree: store.temperatureFormat
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        setTempFormat: format => dispatch(switchDegreeAction(format))
+    }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
