@@ -1,5 +1,5 @@
 const initialState = {
-    temperatureFormat: 'celsius'
+    temperatureFormat: 20
 }
 
 const SWITCH_TEMPERATURE_FORMAT = 'SWITCH_TEMPERATURE_FORMAT';

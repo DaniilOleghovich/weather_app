@@ -67,12 +67,10 @@ function App(props) {
 
 
 
-    // console.log(props);
-
   return (
     <div className="App">
-        <Header/>
-        <City degree={props.degree} setTempFormat={props.setTempFormat}/>
+        <Header degree={props.degree} setTempFormat={props.setTempFormat}/>
+        <City degree={props.degree}/>
     </div>
   );
 }

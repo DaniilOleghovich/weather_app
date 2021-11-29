@@ -7,12 +7,27 @@ const Header = (props) => {
 
     const [isFahrenheitSwitched, setIsFahrenheitSwitched] = useState(false);
 
-    const buttonSearchHandler = (e) => {
-        console.log('Clicked');
+
+    const switchToCelsius = (degree) => {
+        return Math.round((degree + 32) * 1.8);
+    }
+    const switchToFahrenheit = (degree) => {
+        return Math.round((degree - 32) * 1.8);
     }
 
-    const buttonSwitchHandler = () => {
+    const setTempFormat = () => {
         setIsFahrenheitSwitched(!isFahrenheitSwitched);
+
+        if (isFahrenheitSwitched) {
+            props.setTempFormat(switchToCelsius(props.degree.temperatureFormat))
+        } else {
+            props.setTempFormat(switchToFahrenheit(props.degree.temperatureFormat))
+        }
+    }
+
+
+    const buttonSearchHandler = (e) => {
+        console.log('Clicked');
     }
 
     return (
@@ -33,7 +48,7 @@ const Header = (props) => {
             </div>
             <div
                 className="header-wrapper__switch"
-                onClick={buttonSwitchHandler}
+                onClick={setTempFormat}
             >
                 <p
                     className={isFahrenheitSwitched ? 'celsius' : 'celsius switched'}
