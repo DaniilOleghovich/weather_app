@@ -9,16 +9,17 @@ const Header = (props) => {
 
 
     const switchToCelsius = (degree) => {
-        return Math.round((degree + 32) * 1.8);
+        let value = parseFloat(degree);
+        return (value * 1.8) + 32 ;
     }
     const switchToFahrenheit = (degree) => {
-        return Math.round((degree - 32) * 1.8);
+        let value = parseFloat(degree);
+        return (value - 32) / 1.8 ;
     }
 
     const setTempFormat = () => {
         setIsFahrenheitSwitched(!isFahrenheitSwitched);
-
-        if (isFahrenheitSwitched) {
+        if (!isFahrenheitSwitched) {
             props.setTempFormat(switchToCelsius(props.degree.temperatureFormat))
         } else {
             props.setTempFormat(switchToFahrenheit(props.degree.temperatureFormat))
