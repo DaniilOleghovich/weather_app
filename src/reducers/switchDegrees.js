@@ -1,8 +1,8 @@
+import {SWITCH_TEMPERATURE_FORMAT} from '../actions/switchDegreeAction';
+
 const initialState = {
     temperatureFormat: 20
 }
-
-const SWITCH_TEMPERATURE_FORMAT = 'SWITCH_TEMPERATURE_FORMAT';
 
 export const switchTemperatureFormat = (state = initialState, action) => {
     switch (action.type) {
