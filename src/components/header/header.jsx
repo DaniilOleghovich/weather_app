@@ -7,7 +7,6 @@ const Header = (props) => {
 
     const [isFahrenheitSwitched, setIsFahrenheitSwitched] = useState(false);
 
-
     const switchToCelsius = (degree) => {
         let value = parseFloat(degree);
         return (value * 1.8) + 32 ;
