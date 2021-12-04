@@ -1,12 +1,22 @@
 import React from 'react';
 import TimeCondition from "../components/timeCondition/timeCondition";
+import {connect} from "react-redux";
 
-const TimeConditionContainer = () => {
+const TimeConditionContainer = (props) => {
     return (
         <div>
-            <TimeCondition/>
+            {props.cities.cities.map((city) =>
+                <TimeCondition city={city}/>
+            )}
+
         </div>
     );
 };
 
-export default TimeConditionContainer;
+const mapStateToProps = store => {
+    return {
+        cities: store.city
+    }
+}
+
+export default connect(mapStateToProps)(TimeConditionContainer);

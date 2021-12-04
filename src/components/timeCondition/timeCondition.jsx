@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 
-const TimeCondition = () => {
+const TimeCondition = (props) => {
+
+    console.log(props)
 
     // const [cities, setCities] = useState([
     //     {
@@ -21,7 +23,7 @@ const TimeCondition = () => {
 
     return (
         <div>
-
+            {props.city.name}
         </div>
     );
 };

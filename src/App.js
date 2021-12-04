@@ -1,6 +1,6 @@
 import './App.scss';
 import TimeConditionContainer from "./containers/timeConditionContainer";
-import HeaderContainer from "./containers/headerContaineer";
+import HeaderContainer from "./containers/headerContainer";
 
 function App() {
 

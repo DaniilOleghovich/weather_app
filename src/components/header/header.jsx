@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './header.scss';
-import logo from "../../static/img/logo.png"
-import search from "../../static/img/search.png"
+// import logo from "../../static/img/logo.png"
+// import search from "../../static/img/search.png"
 
 const Header = (props) => {
 
@@ -31,38 +31,40 @@ const Header = (props) => {
     }
 
     return (
-        <div className="header-wrapper">
-            <div className="header-wrapper__logo">
-                <div className="logo">
-                    <img src={logo} alt="logo"/>
+        <div className="header">
+            <div className="header-wrapper">
+                <div className="header-wrapper__logo">
+                    <div className="logo">
+                        {/*<img src={logo} alt="logo"/>*/}
+                    </div>
+                    <div className="text">
+                        WeatherApp
+                    </div>
                 </div>
-                <div className="text">
-                    WeatherApp
+                <div className="header-wrapper__search">
+                    <input type="text"/>
+                    <button onClick={buttonSearchHandler}>
+                        {/*<img src={search} alt="search"/>*/}
+                    </button>
                 </div>
-            </div>
-            <div className="header-wrapper__search">
-                <input type="text"/>
-                <button onClick={buttonSearchHandler}>
-                    <img src={search} alt="search"/>
-                </button>
-            </div>
-            <div
-                className="header-wrapper__switch"
-                onClick={setTempFormat}
-            >
-                <p
-                    className={isFahrenheitSwitched ? 'celsius' : 'celsius switched'}
+                <div
+                    className="header-wrapper__switch"
+                    onClick={setTempFormat}
                 >
-                    °C
-                </p>
-                <p className="slash">
-                    /
-                </p>
-                <p
-                    className={!isFahrenheitSwitched ? 'fahrenheit' : 'fahrenheit switched'}
-                >
-                    °F
-                </p>
+                    <p
+                        className={isFahrenheitSwitched ? 'celsius' : 'celsius switched'}
+                    >
+                        °C
+                    </p>
+                    <p className="slash">
+                        /
+                    </p>
+                    <p
+                        className={!isFahrenheitSwitched ? 'fahrenheit' : 'fahrenheit switched'}
+                    >
+                        °F
+                    </p>
+                </div>
             </div>
         </div>
     );

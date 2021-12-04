@@ -8,6 +8,12 @@ const initialState = {
             currentDay: 'Sunday',
             currentTime: '07:09',
             temperature: '12°C'
+        },
+        {
+            name: 'Canada',
+            currentDay: 'Monday',
+            currentTime: '07:09',
+            temperature: '10°C'
         }
     ]
 }
