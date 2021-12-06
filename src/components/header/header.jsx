@@ -1,19 +1,19 @@
 import React, {useState} from 'react';
 import './header.scss';
-// import logo from "../../static/img/logo.png"
-// import search from "../../static/img/search.png"
+import logo from "../../static/img/logo.png"
+import search from "../../static/img/search.png"
 
 const Header = (props) => {
 
     const [isFahrenheitSwitched, setIsFahrenheitSwitched] = useState(false);
 
     const switchToCelsius = (degree) => {
-        let value = parseFloat(degree);
-        return (value * 1.8) + 32 ;
+        const celsiusValue = parseFloat(degree);
+        return (celsiusValue * 1.8) + 32 ;
     }
     const switchToFahrenheit = (degree) => {
-        let value = parseFloat(degree);
-        return (value - 32) / 1.8 ;
+        const fahrenheitValue = parseFloat(degree);
+        return (fahrenheitValue - 32) / 1.8 ;
     }
 
     const setTempFormat = () => {
@@ -35,7 +35,7 @@ const Header = (props) => {
             <div className="header-wrapper">
                 <div className="header-wrapper__logo">
                     <div className="logo">
-                        {/*<img src={logo} alt="logo"/>*/}
+                        <img src={logo} alt="logo"/>
                     </div>
                     <div className="text">
                         WeatherApp
@@ -43,8 +43,10 @@ const Header = (props) => {
                 </div>
                 <div className="header-wrapper__search">
                     <input type="text"/>
-                    <button onClick={buttonSearchHandler}>
-                        {/*<img src={search} alt="search"/>*/}
+                    <button
+                        onClick={buttonSearchHandler}
+                    >
+                        <img src={search} alt="search"/>
                     </button>
                 </div>
                 <div

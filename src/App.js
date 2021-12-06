@@ -1,6 +1,5 @@
 import './App.scss';
-import TimeConditionContainer from "./containers/timeConditionContainer";
-import HeaderContainer from "./containers/headerContainer";
+import Header from "./components/header/header";
 
 function App() {
 
@@ -8,8 +7,7 @@ function App() {
 
   return (
     <div className="App">
-        <HeaderContainer/>
-        <TimeConditionContainer/>
+        <Header/>
     </div>
   );
 }
