@@ -1,19 +1,30 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {CELSIUS} from "../../constants";
+import {CELSIUS, FAHRENHEIT} from "../../constants";
 
 const TimeTemperature = (props) => {
 
     const [currentCondition, ...restCondition] = props.timeCondition;
+
+    const calculateDegree = (format, timeCondition) => {
+        switch (format) {
+            case CELSIUS:
+                return timeCondition.celsiusDegree
+            case FAHRENHEIT:
+                return timeCondition.fahrenheitDegree
+            default:
+                return;
+        }
+    }
 
     return (
         <div>
             <p>
                 Current: {currentCondition.time}
                 +
-                {props.format === CELSIUS ?
-                    currentCondition.celsiusDegree :
-                    currentCondition.fahrenheitDegree
+
+                {
+                    calculateDegree(props.format, currentCondition)
                 }
             </p>
             {
@@ -21,9 +32,8 @@ const TimeTemperature = (props) => {
                     <p>
                         {timeDegree.time}
                         +
-                        {props.format === CELSIUS ?
-                            timeDegree.celsiusDegree :
-                            timeDegree.fahrenheitDegree
+                        {
+                            calculateDegree(props.format, timeDegree)
                         }
                     </p>
                 ))
