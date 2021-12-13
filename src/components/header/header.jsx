@@ -2,29 +2,16 @@ import React, {useState} from 'react';
 import './header.scss';
 import logo from "../../static/img/logo.png"
 import search from "../../static/img/search.png"
+import {connect} from "react-redux";
+import {timeTempAction} from "../../reducers/timeTemperatureReducer";
+import {CELSIUS, FAHRENHEIT} from "../../constants";
 
 const Header = (props) => {
-
-    const [isFahrenheitSwitched, setIsFahrenheitSwitched] = useState(false);
-
-    const switchToCelsius = (degree) => {
-        const celsiusValue = parseFloat(degree);
-        return (celsiusValue * 1.8) + 32 ;
-    }
-    const switchToFahrenheit = (degree) => {
-        const fahrenheitValue = parseFloat(degree);
-        return (fahrenheitValue - 32) / 1.8 ;
-    }
+console.log(props);
 
     const setTempFormat = () => {
-        setIsFahrenheitSwitched(!isFahrenheitSwitched);
-        if (!isFahrenheitSwitched) {
-            props.setTempFormat(switchToCelsius(props.degree.temperatureFormat))
-        } else {
-            props.setTempFormat(switchToFahrenheit(props.degree.temperatureFormat))
-        }
+        props.onSwitchFormat(props.degreeFormat === CELSIUS ? FAHRENHEIT : CELSIUS);
     }
-
 
     const buttonSearchHandler = (e) => {
         console.log('Clicked');
@@ -54,7 +41,7 @@ const Header = (props) => {
                     onClick={setTempFormat}
                 >
                     <p
-                        className={isFahrenheitSwitched ? 'celsius' : 'celsius switched'}
+                        className={`celsius ${props.degreeFormat === CELSIUS && 'switched'}`}
                     >
                         °C
                     </p>
@@ -62,7 +49,7 @@ const Header = (props) => {
                         /
                     </p>
                     <p
-                        className={!isFahrenheitSwitched ? 'fahrenheit' : 'fahrenheit switched'}
+                        className={`fahrenheit ${props.degreeFormat === FAHRENHEIT && 'switched'}`}
                     >
                         °F
                     </p>
@@ -72,4 +59,7 @@ const Header = (props) => {
     );
 };
 
-export default Header;
+export default connect(
+    (state) => ({degreeFormat: state.timeTemperature.format}),
+    (dispatch) => ({onSwitchFormat: (format) => {dispatch(timeTempAction(format))}})
+)(Header);

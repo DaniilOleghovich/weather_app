@@ -1,5 +1,6 @@
 import './App.scss';
 import Header from "./components/header/header";
+import TimeTemperature from "./components/timeTemperature";
 
 function App() {
 
@@ -8,6 +9,7 @@ function App() {
   return (
     <div className="App">
         <Header/>
+        <TimeTemperature/>
     </div>
   );
 }
