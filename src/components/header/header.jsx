@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './header.scss';
 import logo from "../../static/img/logo.png"
 import search from "../../static/img/search.png"
@@ -7,7 +7,6 @@ import {timeTempAction} from "../../reducers/timeTemperatureReducer";
 import {CELSIUS, FAHRENHEIT} from "../../constants";
 
 const Header = (props) => {
-console.log(props);
 
     const setTempFormat = () => {
         props.onSwitchFormat(props.degreeFormat === CELSIUS ? FAHRENHEIT : CELSIUS);

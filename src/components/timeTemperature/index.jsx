@@ -1,21 +1,10 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {CELSIUS, FAHRENHEIT} from "../../constants";
+import {calculateDegree} from "../../helpers";
 
 const TimeTemperature = (props) => {
 
     const [currentCondition, ...restCondition] = props.timeCondition;
-
-    const calculateDegree = (format, timeCondition) => {
-        switch (format) {
-            case CELSIUS:
-                return timeCondition.celsiusDegree
-            case FAHRENHEIT:
-                return timeCondition.fahrenheitDegree
-            default:
-                return;
-        }
-    }
 
     return (
         <div>
@@ -29,7 +18,7 @@ const TimeTemperature = (props) => {
             </p>
             {
                 restCondition.map((timeDegree) => (
-                    <p>
+                    <p key={ Math.random() + props.timeCondition.length}>
                         {timeDegree.time}
                         +
                         {
@@ -41,8 +30,6 @@ const TimeTemperature = (props) => {
         </div>
     );
 };
-
-
 
 export default connect(
     (state) => ({
