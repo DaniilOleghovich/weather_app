@@ -1,0 +1,42 @@
+$font: Roboto, sans-serif;
+
+.wrapper {
+  width: 100%;
+  background-color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 327px;
+  height: 106px;
+  background: #EB6F4C;
+  border-radius: 15px;
+  cursor: pointer;
+
+}
+
+.wrapper-button_circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 46px;
+  height: 46px;
+  border: 1px solid #FFFFFF;
+  border-radius: 50%;
+  font-family: $font;
+  font-size: 32px;
+  line-height: 37px;
+  color: #FFFFFF;
+}
+
+.wrapper-button_text {
+  font-family: $font;
+  font-size: 32px;
+  line-height: 37px;
+  color: #FFFFFF;
+}

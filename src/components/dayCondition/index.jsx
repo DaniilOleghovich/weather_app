@@ -5,7 +5,6 @@ import {calculateDegree} from "../../helpers";
 const DayCondition = (props) => {
 
     const [monday, tuesday, wednesday, thursday, friday, sunday, saturday] = props.dayConditions
-    console.log(monday.condition.celsiusTemperature)
     return (
         <div>
             DAY:
