@@ -1,5 +1,13 @@
 import React from 'react';
 import './index.scss';
+import axios from "axios";
+
+const addNewCity = () => {
+    axios.get(`http://localhost:8080/time/temperature`)
+        .then(res => {
+            console.log(res);
+        })
+}
 
 
 const AddNewCity = () => {
@@ -9,7 +17,9 @@ const AddNewCity = () => {
                 <div className="wrapper-button_circle">
                     +
                 </div>
-                <div className="wrapper-button_text">
+                <div
+                    onClick={() => addNewCity()}
+                    className="wrapper-button_text">
                     Add more cities
                 </div>
             </div>
