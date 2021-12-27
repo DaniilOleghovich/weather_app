@@ -7,16 +7,21 @@ import AddNewCity from "./components/newCity";
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import axios from "axios";
+import {connect} from "react-redux";
+import {fetchData} from "./reducers/timeTemperatureReducer";
+import {useEffect} from "react";
 
-function App() {
+function App(props) {
+
+    useEffect(() => {
+        props.getData();
+    }, [])  //works well
 
     // const counter = useSelector((state) => console.log(state.temperatureFormat))
 
     const getTimeTemperature = () => {
-        axios.get(`http://localhost:8080/time/temperature`)
-            .then(res => {
-                console.log(res.data);
-            })
+        // props.getData(); //works only after second click - WHYYYY
+        console.log(props.data);
     }
 
     const getDayCondition = () => {
@@ -65,4 +70,13 @@ function App() {
   );
 }
 
-export default App;
+export default connect(
+    (state) => ({data: state.timeTemperature.data}),
+    (dispatch) => ({getData: () => {
+            dispatch(fetchData())
+        }})
+)(App);
+
+
+// асинхронность - промисы, async/await
+// saga

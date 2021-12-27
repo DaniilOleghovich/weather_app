@@ -24,18 +24,25 @@ const initialState = {
             celsiusDegree: 23,
             fahrenheitDegree: 74
         }
-    ]
+    ],
+    data: []
 }
 
-const SWITCH_FORMAT = 'SWITCH_FORMAT'
+const SWITCH_FORMAT = 'SWITCH_FORMAT';
+const SET_DATA = 'SET_DATA';
+export const FETCH_DATA = 'FETCH_DATA';
 
 export const timeTempReducer = (state = initialState, action) => {
     switch (action.type) {
         case SWITCH_FORMAT:
             return {...state, format: action.payload.format}
+        case SET_DATA:
+            return {...state, data: action.payload.data}
         default:
             return state
     }
 }
 
 export const timeTempAction = (format) => ({type: SWITCH_FORMAT, payload: {format}})
+export const setDataAction = (data) => ({type: SET_DATA, payload: {data}})
+export const fetchData = () => ({type: FETCH_DATA})
