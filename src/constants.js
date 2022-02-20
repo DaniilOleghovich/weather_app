@@ -1,1 +1,1 @@
-export const URL = 'http://localhost:8080/time/temperature'
+export const URL = 'http://localhost:8080/conditions'
